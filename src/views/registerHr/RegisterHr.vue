@@ -34,7 +34,12 @@
     <!-- 表单左插槽 -->
 
     <div slot="form_left">
-      <el-form :model="hrForm" :rules="rules" ref="hrForm" enctype="multipart/form-data">
+      <el-form
+        :model="hrForm"
+        :rules="rules"
+        ref="hrForm"
+        enctype="multipart/form-data"
+      >
         <!-- 头像* -->
 
         <el-form-item label="头像：" prop="file" class="via">
@@ -59,29 +64,47 @@
         <!-- 姓名* -->
 
         <el-form-item label="姓名：" prop="recruiterName">
-          <el-input v-model="hrForm.recruiterName" placeholder="请输入您的姓名" clearable></el-input>
+          <el-input
+            v-model="hrForm.recruiterName"
+            placeholder="请输入您的姓名"
+            clearable
+          ></el-input>
         </el-form-item>
 
         <!-- 我的公司* -->
 
         <el-form-item label="我的公司：" prop="recruiterCompany">
-          <el-input v-model="hrForm.recruiterCompany" placeholder="您当前就职的公司" clearable></el-input>
+          <el-input
+            v-model="hrForm.recruiterCompany"
+            placeholder="您当前就职的公司"
+            clearable
+          ></el-input>
         </el-form-item>
 
         <!-- 我的职位*-->
 
         <el-form-item label="我的职位：" prop="recruiterPost">
-          <el-input v-model="hrForm.recruiterPost" placeholder="您在公司担任的职位" clearable></el-input>
+          <el-input
+            v-model="hrForm.recruiterPost"
+            placeholder="您在公司担任的职位"
+            clearable
+          ></el-input>
         </el-form-item>
         <!-- 我的邮箱* -->
         <el-form-item label="我的邮箱：" prop="recruiterEmail">
-          <el-input v-model="hrForm.recruiterEmail" placeholder="用于接收牛人简历，建议填写公司邮箱" clearable></el-input>
+          <el-input
+            v-model="hrForm.recruiterEmail"
+            placeholder="用于接收牛人简历，建议填写公司邮箱"
+            clearable
+          ></el-input>
         </el-form-item>
 
         <!-- 保存按钮 -->
 
         <el-form-item class="button">
-          <el-button type="primary" @click="submitForm('hrForm')">保存 去发布一个职位</el-button>
+          <el-button type="primary" @click="submitForm('hrForm')"
+            >保存 去发布一个职位</el-button
+          >
           <el-button @click="resetForm('hrForm')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -227,7 +250,7 @@ export default {
           this.$store.state.companyName = this.hrForm.recruiterCompany;
           this.$store.state.userName = this.hrForm.recruiterName;
           this.$store.state.headPUrl = this.headP;
-          // this.$router.push("/registerHrRecruitMsg");
+          this.$router.push("/registerHrRecruitMsg");
         } else {
           console.log("error submit!!");
           return false;

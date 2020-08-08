@@ -4,7 +4,7 @@ import { requestL, request, requestLJQ } from "./request";
 // 个人用户基本信息
 export function postCode(formData) {
   return requestL({
-    url: "/resume/addRsume",
+    url: "/resume/updateResume",
     method: "post",
     headers: {
       "Content-Type": "application/from-data",
@@ -15,7 +15,7 @@ export function postCode(formData) {
 // 实习经历
 export function postCodeCom(formData) {
   return requestL({
-    url: "/resume/addRsume",
+    url: "/resume/updateResume",
     method: "post",
     headers: {
       "Content-Type": "application/from-data",
@@ -26,7 +26,7 @@ export function postCodeCom(formData) {
 // 学历信息
 export function postCodeL(formData) {
   return requestL({
-    url: "/resume/addRsume",
+    url: "/resume/updateResume",
     method: "post",
     headers: {
       "Content-Type": "application/from-data",
@@ -37,7 +37,7 @@ export function postCodeL(formData) {
 // 期望职位表单
 export function postCodeHope(formData) {
   return requestL({
-    url: "/resume/addRsume",
+    url: "/resume/updateResume",
     method: "post",
     headers: {
       "Content-Type": "application/from-data",
@@ -48,6 +48,6 @@ export function postCodeHope(formData) {
 // 获取3级地址
 export function getPlace() {
   return requestLJQ({
-    url: "/city/all",
+    url: "/city/city/all",
   });
 }

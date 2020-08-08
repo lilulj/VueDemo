@@ -5,10 +5,16 @@
         <div class="navbar-logo greencolor">领航</div>
         <slot name="navbar-city"></slot>
         <ul class="displayflex navbar-item">
-          <li @click="indexClick">首页</li>
-          <li @click="postClick">职业</li>
+          <li @click="indexClick" :class="$route.path=='/index'?'greencolor':''">首页</li>
+          <li
+            @click="postClick"
+            :class="$route.path=='/DetailHotPost'||$route.path=='/DetailHotPostList'?'greencolor':''"
+          >职业</li>
           <li>校园</li>
-          <li @click="companyClick">公司</li>
+          <li
+            @click="companyClick"
+            :class="$route.path=='/company'||$route.path=='/DetailHotCompany'?'greencolor':''"
+          >公司</li>
           <li>APP</li>
           <li>资讯</li>
         </ul>
@@ -66,8 +72,9 @@ export default {
     };
   },
   mounted() {
-    this.cutLogin()
+    this.cutLogin();
   },
+  computed: {},
   methods: {
     //注册跳转
     register() {

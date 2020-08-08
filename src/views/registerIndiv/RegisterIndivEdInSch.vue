@@ -20,11 +20,20 @@
     <div slot="form">
       <!-- 学历信息表单 -->
 
-      <el-form :model="educationForm" :rules="rules" ref="educationForm" label-width="80px">
+      <el-form
+        :model="educationForm"
+        :rules="rules"
+        ref="educationForm"
+        label-width="80px"
+      >
         <!-- 学校名称* -->
 
         <el-form-item label="学校名称" prop="graduationSch">
-          <el-input v-model="educationForm.graduationSch" clearable placeholder="请输入您的学校名称"></el-input>
+          <el-input
+            v-model="educationForm.graduationSch"
+            clearable
+            placeholder="请输入您的学校名称"
+          ></el-input>
         </el-form-item>
 
         <!-- 学历* -->
@@ -43,7 +52,11 @@
         <!-- 所学专业* -->
 
         <el-form-item label="所学专业" prop="graduationMajor">
-          <el-input v-model="educationForm.graduationMajor" placeholder="例如：电子科学与技术" clearable></el-input>
+          <el-input
+            v-model="educationForm.graduationMajor"
+            placeholder="例如：电子科学与技术"
+            clearable
+          ></el-input>
         </el-form-item>
 
         <!-- 学习时间* -->
@@ -68,14 +81,16 @@
             maxlength="300"
             show-word-limit
             clearable
-            :autosize="{ minRows: 6, maxRows: 8}"
+            :autosize="{ minRows: 6, maxRows: 8 }"
           ></el-input>
         </el-form-item>
 
         <!-- 按钮 -->
 
         <el-form-item class="button-box">
-          <el-button type="primary" @click="submitForm('educationForm')">下一步</el-button>
+          <el-button type="primary" @click="submitForm('educationForm')"
+            >下一步</el-button
+          >
           <el-button @click="backStep">上一步</el-button>
           <el-button @click="resetForm('educationForm')">重置</el-button>
         </el-form-item>
@@ -154,7 +169,7 @@ export default {
             duration: 1500,
           });
           // 路由
-          this.$router.push("/registerIndivHopePost");
+          // this.$router.push("/registerIndivHopePost");
         } else {
           console.log("error submit!!");
           return false;

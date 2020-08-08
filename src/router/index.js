@@ -7,8 +7,9 @@ const Index = () => import("views/index/Index");
 const DetailHotPostList = () => import("views/detail/DetailHotPostList");
 const DetailHotPost = () => import("views/detail/DetailHotPost");
 const Company = () => import("views/company/Company");
-const DetailHotCompany = () => import("views/detail/DetailHotCompany")
+const DetailHotCompany = () => import("views/detail/DetailHotCompany");
 
+//gch
 const UploadResum = () => import("views/upload/UploadResum");
 // 个人注册路由
 const RegisterIndiv = () => import("views/registerIndiv/RegisterIndiv");
@@ -22,6 +23,9 @@ const RegisterIndivHopePost = () =>
 const RegisterHr = () => import("views/registerHr/RegisterHr");
 const RegisterHrRecruitMsg = () =>
   import("views/registerHr/RegisterHrRecruitMsg");
+
+//我的简历路由
+const indivResume = () => import("views/indivResume/myResume");
 // 使用路由
 Vue.use(VueRouter);
 
@@ -51,14 +55,14 @@ const routes = [
     component: DetailHotPostList,
   },
   {
+    path: "/DetailHotCompany",
+    name: "DetailHotCompany",
+    component: DetailHotCompany,
+  },
+  {
     path: "/DetailHotPost",
     name: "DetailHotPost",
     component: DetailHotPost,
-  },
-  {
-    path: '/DetailHotCompany',
-    name: 'DetailHotCompany',
-    component: DetailHotCompany
   },
   {
     path: "/company",
@@ -100,6 +104,11 @@ const routes = [
   {
     path: "/registerHrRecruitMsg",
     component: RegisterHrRecruitMsg,
+  },
+  // 我的简历
+  {
+    path: "/indivResume",
+    component: indivResume,
   },
 ];
 

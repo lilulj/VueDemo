@@ -1,9 +1,9 @@
-import { requestL, request } from "./request";
+import { requestL, request, requestLJQ } from "./request";
 
 // 企业注册
 export function registerRecruiter(formData) {
-  return request({
-    url: "/hr/updateByHrDto",
+  return requestLJQ({
+    url: "/enterprise/hr/updateByHrDto",
     method: "post",
     headers: {
       "Content-Type": "application/from-data",
@@ -13,8 +13,8 @@ export function registerRecruiter(formData) {
 }
 //招聘职位填写
 export function registerPost(form) {
-  return request({
-    url: "/recruit/insertByRecVo",
+  return requestLJQ({
+    url: "/enterprise/recruit/insertByRecVo",
     method: "post",
     data: {
       recType: form.recruitType,

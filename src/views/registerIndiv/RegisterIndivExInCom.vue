@@ -86,7 +86,7 @@
             maxlength="300"
             show-word-limit
             clearable
-            :autosize="{ minRows: 6, maxRows: 8}"
+            :autosize="{ minRows: 6, maxRows: 8 }"
           ></el-input>
         </el-form-item>
 
@@ -103,7 +103,7 @@
             type="primary"
             class="skip"
             @click="skip"
-            v-show="$store.state.identify =='学生'"
+            v-show="$store.state.identify == '学生'"
           >跳过</el-button>
         </el-form-item>
       </el-form>
@@ -163,23 +163,23 @@ const options = [
 //技能 选项
 const skilloptions = [
   {
-    value: "选项1",
+    value: "黄金糕",
     label: "黄金糕",
   },
   {
-    value: "选项2",
+    value: "双皮奶",
     label: "双皮奶",
   },
   {
-    value: "选项3",
+    value: "蚵仔煎",
     label: "蚵仔煎",
   },
   {
-    value: "选项4",
+    value: "龙须面",
     label: "龙须面",
   },
   {
-    value: "选项5",
+    value: "北京烤鸭",
     label: "北京烤鸭",
   },
 ];
@@ -246,13 +246,16 @@ export default {
             this.exForm.onJobTime[0]
           ).toLocaleDateString();
           let endJob = new Date(this.exForm.onJobTime[1]).toLocaleDateString();
+          let practicePost = this.exForm.practicePost.join(",");
+          let haveSkill = this.exForm.haveSkill.join(",");
           let formData = new FormData();
           formData.append("practiceCompany", this.exForm.practiceCompany);
-          // formData.append("practicePost", this.exForm.practicePost);
+          formData.append("practicePost", practicePost);
           formData.append("practiceStartTime", startJob);
           formData.append("pacticeEndTime", endJob);
-          // formData.append("skills", this.exForm.haveSkill);
+          formData.append("skills", haveSkill);
           formData.append("practiceContent", this.exForm.practiceContent);
+          formData.append("id", this.$store.state.user.userId);
           postCodeCom(formData).then((result) => {
             console.log(result);
           });

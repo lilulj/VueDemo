@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 个人注册组件 -->
     <RegisterIndivModule></RegisterIndivModule>
   </div>
 </template>
