@@ -11,7 +11,7 @@
 
     <!-- 上传简历类型的按钮 -->
     <div>
-      <el-button type="primary">上传简历</el-button>
+      <el-button type="primary" @click="onload">上传简历</el-button>
       <!-- 切换成招聘者按钮   可以不要所以做成插槽 -->
       <slot name="change">
         <div class="recruit" @click="recruiter">切换为招聘者 ></div>
@@ -36,6 +36,10 @@ export default {
         duration: 1000,
       });
       this.$router.push("/registerHr");
+    },
+    //上传简历
+    onload() {
+      this.$router.push("/uploadResum");
     },
   },
 };

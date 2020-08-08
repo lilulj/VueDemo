@@ -41,6 +41,10 @@
             <span>上传附件简历</span>
           </div>
         </div>
+        <div class="hideinfo" v-show="isShowFiexdTop">
+          <span :class="activeName=='first'?'greencolor':''" @click="infoClick">公司简介</span>
+          <span :class="activeName=='second'?'greencolor':''" @click="jobClick">职位招聘(156)</span>
+        </div>
       </div>
     </div>
     <div :class="isShowFiexdTop?'banner-fixed':''"></div>
@@ -206,21 +210,33 @@
         </el-tab-pane>
         <el-tab-pane label="职位招聘(156)" name="second">
           <div class="company-box1 inner">
-            <div class="job-category">
-              <p class="job-category-label">职位类型:</p>
-              <p class="job-category-items">
-                <span>全部 (156)</span>
-                <span>技术 (67)</span>
-                <span>产品 (38)</span>
-                <span>运营 (15)</span>
-                <span>销售 (12)</span>
-                <span>人事/财务/行政 (9)</span>
-                <span>设计 (7)</span>
-                <span>市场 (3)</span>
-                <span>旅游 (3)</span>
-                <span>传媒 (1)</span>
-                <span>金融 (1)</span>
-              </p>
+            <div class="job-category" :class="isShowMoreJobb?'isShowMoreJob-active':''">
+              <div class="job-category-one">
+                <p class="job-category-label">职位类型:</p>
+                <p class="job-category-items">
+                  <span>全部 (156)</span>
+                  <span>技术 (67)</span>
+                  <span>产品 (38)</span>
+                  <span>运营 (15)</span>
+                  <span>销售 (12)</span>
+                  <span>人事/财务/行政 (9)</span>
+                  <span>设计 (7)</span>
+                  <span>市场 (3)</span>
+                  <span>旅游 (3)</span>
+                  <span>传媒 (1)</span>
+                  <span>金融 (1)</span>
+                </p>
+                <span class="isShowMoreJob" @click="isShowMoreJob">{{isShowMoreJobb?'收起':'更多筛选条件'}}</span>
+              </div>
+              <div class="job-category-one">
+                <p class="job-category-label">筛选职位:</p>
+                <p class="job-category-items">
+                  <span>工作城市</span>
+                  <span>经验要求</span>
+                  <span>学历要求</span>
+                  <span>薪资待遇</span>
+                </p>
+              </div>
             </div>
             <div class="job-list">
               <ul class="list">
@@ -313,9 +329,81 @@ export default {
   name: "DetailHotCompany",
   data() {
     return {
-      activeName: "first",
+      activeName: "second",
       isShowMore: false,
+      isShowMoreJobb: false,
       isShowFiexdTop: false,
+      companyData: {
+        cityName: [
+          "全国",
+          "成都",
+          "北京",
+          "上海",
+          "广州",
+          "深圳",
+          "杭州",
+          "天津",
+          "西安",
+          "厦门",
+          "长沙",
+          "武汉",
+          "郑州",
+          "重庆",
+          "全部城市",
+        ],
+        companyitem: [
+          "不限",
+          "电子商务",
+          "游戏",
+          "媒体",
+          "广告营销",
+          " 数据服务",
+          "医疗健康",
+          "生活服务",
+          "O2O",
+          "旅游",
+          "分类信息",
+          "音乐/视频/阅读",
+          "在线教育",
+          "社交网络",
+          "人力资源服务",
+          "企业服务",
+          "信息安全",
+          "智能硬件",
+          "移动互联网",
+          "互联网",
+          "计算机软件",
+          " 通信/网络设备",
+          "广告/公关/会展",
+          "互联网金融",
+          "物流/仓储",
+          "贸易/进出口",
+          "咨询",
+          "工程施工",
+          "汽车生产",
+          "其他行业",
+        ],
+        financing: [
+          "不限",
+          "未融资",
+          "天使轮",
+          "A轮",
+          "B轮",
+          "C轮",
+          "D轮及以上",
+          "已上市",
+          "不需要融资",
+        ],
+        scale: [
+          "不限",
+          "0-20人",
+          "20-99人",
+          "100-499人",
+          "500-999人",
+          "1000-9999人",
+          "10000人以上",
+        ],
+      },
     };
   },
   mounted() {
@@ -326,7 +414,18 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
-      //   console.log(tab, event);
+      // console.log(tab);
+    },
+    infoClick() {
+      this.activeName = "first";
+    },
+    jobClick() {
+      this.activeName = "second";
+    },
+    //更多筛选条件
+    isShowMoreJob() {
+      this.isShowMoreJobb = !this.isShowMoreJobb;
+      console.log(this.isShowMoreJobb);
     },
     //展开
     moreClick() {
@@ -487,6 +586,22 @@ body {
   top: 0;
   z-index: 1010;
 }
+.hideinfo {
+  position: absolute;
+  bottom: -63px;
+  left: 0;
+  span {
+    display: inline-block;
+    margin-right: 40px;
+    padding-bottom: 10px;
+    cursor: pointer;
+  }
+  .greencolor {
+    color: #00c2b3;
+    border-bottom: 2px solid #00c2b3;
+  }
+}
+
 .banner-fixed {
   height: 190px;
   visibility: hidden;
@@ -730,24 +845,39 @@ body {
   .company-box1 {
     height: 1000px;
     .job-category {
-      display: flex;
       font-size: 14px;
       padding: 20px 0 15px 30px;
       background: #fff;
       margin-top: 1px;
       margin-bottom: 18px;
-      .job-category-label {
-        width: 90px;
-        flex-shrink: 1;
-        line-height: 40px;
+      max-height: 120px;
+      overflow: hidden;
+      position: relative;
+      .isShowMoreJob {
+        position: absolute;
+        right: 60px;
+        bottom: 23px;
+        color: #00c2b3;
+        cursor: pointer;
       }
-      .job-category-items {
-        span {
-          display: inline-block;
+      .job-category-one {
+        display: flex;
+        .job-category-label {
+          width: 90px;
+          flex-shrink: 0;
           line-height: 40px;
-          margin: 0 50px 5px 0;
+        }
+        .job-category-items {
+          span {
+            display: inline-block;
+            line-height: 40px;
+            margin: 0 50px 5px 0;
+          }
         }
       }
+    }
+    .isShowMoreJob-active {
+      max-height: none;
     }
     .job-list {
       .list {

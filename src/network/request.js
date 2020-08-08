@@ -3,7 +3,8 @@ import axios from "axios";
 export function request(config) {
   //1.创建axios实例
   const instance = axios.create({
-    baseURL: "http://192.168.0.106:10010",
+    // baseURL: 'http://192.168.0.131:10086',
+    baseURL: "http://192.168.0.103:10010",
     timeout: 5000,
   });
   //拦截器
@@ -28,7 +29,7 @@ export function request(config) {
 export function requestL(config) {
   //1.创建axios实例
   const instance = axios.create({
-    baseURL: "http://192.168.0.131:10086",
+    baseURL: "http://192.168.0.106:10010",
     // baseURL: "http://192.168.0.172:8500",
     timeout: 5000,
   });
@@ -55,7 +56,7 @@ export function requestLJQ(config) {
   //1.创建axios实例
   const instance = axios.create({
     // baseURL: 'http://192.168.0.131:10086',
-    baseURL: "http://192.168.0.172:8500",
+    baseURL: "http://192.168.0.103:10010",
     timeout: 5000,
   });
   //拦截器

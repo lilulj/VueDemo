@@ -65,6 +65,8 @@
               v-model="formData.birthDate"
               style="width: 100%;"
               clearable
+              :picker-options="pickerOptions0"
+              default-value="2001-06-01"
             ></el-date-picker>
           </el-col>
         </el-form-item>
@@ -78,6 +80,7 @@
               placeholder="参加工作时间"
               v-model="formData.workDate"
               style="width: 100%;"
+              :picker-options="pickerOptions1"
             ></el-date-picker>
           </el-col>
         </el-form-item>
@@ -153,6 +156,19 @@ export default {
   name: "",
   data() {
     return {
+      // 出生日期限制
+      pickerOptions0: {
+        disabledDate(time) {
+          let eighteen = 18 * 365 * 24 * 60 * 60 * 1000;
+          return time.getTime() > Date.now() - eighteen;
+        },
+      },
+      //工作日期限制
+      pickerOptions1: {
+        disabledDate(time) {
+          return time.getTime() > Date.now();
+        },
+      },
       // 基本信息表单
       formData: {
         usename: "", //用户姓名
@@ -262,6 +278,7 @@ export default {
           formData.append("workDate", workDate);
           formData.append("studentStatus", this.formData.studentStatus);
           formData.append("headPh", this.formData.file.raw);
+          formData.append("id", this.$store.state.user.userId);
           postCode(formData).then((result) => {
             console.log(result);
           });
@@ -298,7 +315,7 @@ export default {
       console.log(file);
       this.formData.file = file;
       this.formData.headPh = URL.createObjectURL(file.raw);
-      console.log(this.formData.file);
+      console.log(this.formData.headPh);
     },
     async submitUpload(content) {
       // try {
