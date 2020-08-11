@@ -2,10 +2,10 @@
   <div>
     <div class="indexcommonbox displayflex">
       <div
-        v-for="(item,index) in indexcommonbox"
+        v-for="item in indexcommonbox"
         :key="item.name"
         class="indexcommonbox-item displayflex cursorpointer"
-        @click="DetailHotPostList(index)"
+        @click="DetailHotPostList(item.recId)"
       >
         <div class="indexcommonbox-left">{{item.entLogo}}</div>
         <div class="indexcommonbox-right">
@@ -46,13 +46,19 @@ export default {
   },
   methods: {
     //跳转招聘信息详情页面
-    DetailHotPostList(index) {
-      this.$router.push({ name: "DetailHotPostList", params: { id: index } });
+    DetailHotPostList(recId) {
+      window.addEventListener("unload", this.saveState);
+      this.$store.state.userGetId.hotPostId = recId;
+      // this.$router.push({ name: "DetailHotPostList", params: { id: recId } });
+      this.$router.push("/DetailHotPostList");
     },
     //查看更多
-    lookMore(){
-      this.$router.push('/DetailHotPost')
-    }
+    lookMore() {
+      this.$router.push("/DetailHotPost");
+    },
+    saveState() {
+      sessionStorage.setItem("state", JSON.stringify(this.$store.state));
+    },
   },
   computed: {},
   components: {},

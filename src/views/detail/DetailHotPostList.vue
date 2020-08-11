@@ -11,28 +11,21 @@
       <div class="inner job-primary">
         <div class="info-primary">
           <div class="job-status">
-            <span>招聘中</span>
+            <span>{{postDetailList.recStatus}}</span>
           </div>
           <div class="name">
-            <h1 class="singleomit">高级前端开发</h1>
-            <span class="salary">20-40K</span>
+            <h1 class="singleomit">{{postDetailList.recTitle}}</h1>
+            <span class="salary">{{postDetailList.workSalary}}</span>
           </div>
           <p>
-            成都
+            {{postDetailList.workCity}}
             <em class="dolt"></em>
-            5-10年
+            {{postDetailList.workExp}}
             <em class="dolt"></em>
-            本科
+            {{postDetailList.workDip}}
           </p>
           <div class="job-tags">
-            <span>五险一金</span>
-            <span>补充医疗保险</span>
-            <span>定期体检</span>
-            <span>年终奖</span>
-            <span>带薪年假</span>
-            <span>员工旅游</span>
-            <span>通讯补贴</span>
-            <span>节日福利</span>
+            <span v-for="item in getWelfareToArray" :key="item.name">{{item}}</span>
           </div>
         </div>
         <div class="job-op">
@@ -164,7 +157,6 @@
             <h3>相似职位</h3>
             <span>更多相似职位 ></span>
           </div>
-          
         </div>
       </div>
     </div>
@@ -176,21 +168,38 @@
 <script>
 import NavBar from "components/content/navbar/NavBar";
 import FooterDetail from "components/content/footer/Footer";
+
+import { getPostDetailList } from "network/detail/detailPost";
 export default {
   name: "DetailHotPostList",
   data() {
     return {
-      hotPostId: null,
+      postDetailList: {},
     };
   },
-  created() {
+  created() {},
+  mounted() {
     //1.保存传入的id
-    this.hotPostId = this.$route.params.id;
-    // console.log(this.hotPostId);
+    this.getPostDetailList(this.$store.state.userGetId.hotPostId);
+    console.log(this.$store.state.userGetId.hotPostId);
+  },
+  computed: {
+    getWelfareToArray() {
+      let entWelfare = this.postDetailList.entWelfare;
+      if (entWelfare) return entWelfare.split(",");
+    },
   },
   components: {
     NavBar,
     FooterDetail,
+  },
+  methods: {
+    getPostDetailList(id) {
+      getPostDetailList(id).then((res) => {
+        this.postDetailList = res.data.data;
+        console.log(this.postDetailList);
+      });
+    },
   },
 };
 </script>
@@ -380,7 +389,7 @@ export default {
 .sider-company p.gray {
   color: #d0d4da;
 }
-.similarityjob{
+.similarityjob {
   display: flex;
   justify-content: space-between;
 }

@@ -1,11 +1,11 @@
 <template>
   <div>
     <!-- 个人优势盒子 -->
-    <div class="flex advaBox" v-show="!isShow">
+    <div class="flex advaBox" v-show="!isShow" @click="isShow=true">
       <div class="content">
         <p>个人优势{{}}</p>
       </div>
-      <a href="javascript:;" class="edit flex" @click="isShow = true">
+      <a href="javascript:;" class="edit flex" @click.stop="isShow = true">
         <div class="el-icon-edit-outline"></div>
         <div>编辑</div>
       </a>
@@ -46,7 +46,8 @@ export default {
   name: "",
   data() {
     return {
-      isShow: false,
+      isShow: false, //展示
+      isLoading: false, //加载
       ruleForm: {
         personalAdva: "", //个人优势
       },

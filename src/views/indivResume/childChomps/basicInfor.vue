@@ -43,7 +43,7 @@
           <img src alt />
         </div>
         <!-- 编辑按钮 -->
-        <a href="javascript:;" class="edit flex" @click="isShow=true">
+        <a href="javascript:;" class="edit flex" @click.stop="isShow=true">
           <div class="el-icon-edit-outline"></div>
           <div>编辑</div>
         </a>
@@ -148,6 +148,7 @@
                   placeholder="选择日期"
                   disabled
                   prefix-icon="null"
+                  value-format="yyyy-MM-dd"
                 ></el-date-picker>
               </el-form-item>
             </el-tooltip>

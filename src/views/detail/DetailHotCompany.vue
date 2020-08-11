@@ -239,80 +239,94 @@
               </div>
             </div>
             <div class="job-list">
-              <ul class="list">
-                <li>
-                  <div>
-                    <span class="title">资深运维工程师—机票目的地事业群</span>
-                    <span class="job-area">[北京]</span>
-                    <p>
-                      <span class="red">25-40K·16薪</span>
-                      经验不限
+              <div class="job-left">
+                <ul class="list">
+                  <li>
+                    <div>
+                      <span class="title">资深运维工程师—机票目的地事业群</span>
+                      <span class="job-area">[北京]</span>
+                      <p>
+                        <span class="red">25-40K·16薪</span>
+                        经验不限
+                        <em class="vline"></em>
+                        本科
+                      </p>
+                    </div>
+                    <div class="info-publis">
+                      <span class="img"></span>
+                      <span>孙女士</span>
                       <em class="vline"></em>
-                      本科
-                    </p>
-                  </div>
-                  <div class="info-publis">
-                    <span class="img"></span>
-                    <span>孙女士</span>
-                    <em class="vline"></em>
-                    <span>hrbp</span>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <span class="title">资深运维工程师—机票目的地事业群</span>
-                    <span class="job-area">[北京]</span>
-                    <p>
-                      <span class="red">25-40K·16薪</span>
-                      经验不限
+                      <span>hrbp</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <span class="title">资深运维工程师—机票目的地事业群</span>
+                      <span class="job-area">[北京]</span>
+                      <p>
+                        <span class="red">25-40K·16薪</span>
+                        经验不限
+                        <em class="vline"></em>
+                        本科
+                      </p>
+                    </div>
+                    <div class="info-publis">
+                      <span class="img"></span>
+                      <span>孙女士</span>
                       <em class="vline"></em>
-                      本科
-                    </p>
-                  </div>
-                  <div class="info-publis">
-                    <span class="img"></span>
-                    <span>孙女士</span>
-                    <em class="vline"></em>
-                    <span>hrbp</span>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <span class="title">资深运维工程师—机票目的地事业群</span>
-                    <span class="job-area">[北京]</span>
-                    <p>
-                      <span class="red">25-40K·16薪</span>
-                      经验不限
+                      <span>hrbp</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <span class="title">资深运维工程师—机票目的地事业群</span>
+                      <span class="job-area">[北京]</span>
+                      <p>
+                        <span class="red">25-40K·16薪</span>
+                        经验不限
+                        <em class="vline"></em>
+                        本科
+                      </p>
+                    </div>
+                    <div class="info-publis">
+                      <span class="img"></span>
+                      <span>孙女士</span>
                       <em class="vline"></em>
-                      本科
-                    </p>
-                  </div>
-                  <div class="info-publis">
-                    <span class="img"></span>
-                    <span>孙女士</span>
-                    <em class="vline"></em>
-                    <span>hrbp</span>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <span class="title">资深运维工程师—机票目的地事业群</span>
-                    <span class="job-area">[北京]</span>
-                    <p>
-                      <span class="red">25-40K·16薪</span>
-                      经验不限
+                      <span>hrbp</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <span class="title">资深运维工程师—机票目的地事业群</span>
+                      <span class="job-area">[北京]</span>
+                      <p>
+                        <span class="red">25-40K·16薪</span>
+                        经验不限
+                        <em class="vline"></em>
+                        本科
+                      </p>
+                    </div>
+                    <div class="info-publis">
+                      <span class="img"></span>
+                      <span>孙女士</span>
                       <em class="vline"></em>
-                      本科
+                      <span>hrbp</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="job-right">
+                <div class="right-list">
+                  <p class="title">看过的职位</p>
+                  <div class="item">
+                    <p class="item-list">
+                      <span class="name">Data Scientist 数据科学家</span>
+                      <span class="color">15-30K</span>
                     </p>
+                    <p class="item-title">育碧软件</p>
                   </div>
-                  <div class="info-publis">
-                    <span class="img"></span>
-                    <span>孙女士</span>
-                    <em class="vline"></em>
-                    <span>hrbp</span>
-                  </div>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
         </el-tab-pane>
@@ -843,7 +857,6 @@ body {
     }
   }
   .company-box1 {
-    height: 1000px;
     .job-category {
       font-size: 14px;
       padding: 20px 0 15px 30px;
@@ -880,6 +893,51 @@ body {
       max-height: none;
     }
     .job-list {
+      display: flex;
+      justify-content: space-between;
+
+      .job-left {
+        flex-grow: 1;
+      }
+
+      .job-right {
+        width: 284px;
+        background: #fff;
+        flex-shrink: 0;
+        height: 100%;
+        .right-list {
+          font-size: 14px;
+          .title {
+            color: #00c2b3;
+            line-height: 20px;
+            border-bottom: 2px solid #f2f2f5;
+            padding: 13px 25px 12px;
+          }
+          .item {
+            margin: 0 25px;
+            border-bottom: 1px solid #eef0f4;
+            padding: 11px 0;
+            .item-list {
+              display: flex;
+              justify-content: space-between;
+              line-height: 20px;
+              .name {
+                width: 140px;
+                @single();
+              }
+              .color {
+                color: #fc6f3b;
+              }
+            }
+            .item-title {
+              line-height: 22px;
+              color: #8d92a1;
+              font-size: 12px;
+              margin-bottom: 6px;
+            }
+          }
+        }
+      }
       .list {
         width: 884px;
         li {
